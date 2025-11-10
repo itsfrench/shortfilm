@@ -14,7 +14,7 @@ export default function SwipeCard({ imageUrl, onSwipe }: SwipeCardProps) {
   const [showIcon, setShowIcon] = useState<'heart' | 'x' | null>(null);
   const cardRef = useRef<HTMLDivElement>(null);
 
-  const SWIPE_THRESHOLD = 100; // pixels from center to trigger swipe
+  const SWIPE_THRESHOLD = 200; // pixels from center to trigger swipe
 
   const handleStart = (clientX: number, clientY: number) => {
     setIsDragging(true);
@@ -165,15 +165,21 @@ export default function SwipeCard({ imageUrl, onSwipe }: SwipeCardProps) {
       </div>
 
       {/* Overlay icons */}
-      {showIcon === 'heart' && (
-        <div className="absolute top-8 right-8 bg-green-500 text-white p-6 rounded-full text-5xl font-bold border-4 border-white shadow-lg transform rotate-12">
-          ❤️
-        </div>
-      )}
-      {showIcon === 'x' && (
-        <div className="absolute top-8 left-8 bg-red-500 text-white p-6 rounded-full text-5xl font-bold border-4 border-white shadow-lg transform -rotate-12">
-          ✕
-        </div>
+        {showIcon === 'heart' && (
+          <div 
+            className="absolute top-2/3 -left-40 -translate-y-1/2 text-5xl font-bold"
+            style={{ transform: `rotate(${-rotation}deg) translateY(-50%)` }}
+          >
+            ❤️
+          </div>
+        )}
+        {showIcon === 'x' && (
+          <div 
+            className="absolute top-2/3 -right-40 -translate-y-1/2 text-red-500 text-5xl font-bold"
+            style={{ transform: `rotate(${-rotation}deg) translateY(-50%)` }}
+          >
+            ✕
+          </div>
       )}
     </div>
   );
