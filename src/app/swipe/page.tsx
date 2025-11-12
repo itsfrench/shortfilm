@@ -4,16 +4,30 @@ import { useState } from 'react';
 import Image from 'next/image';
 import SwipeCard from '../../components/SwipeCard';
 
+
 export default function Home() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [swipeCount, setSwipeCount] = useState(0);
   // Generate placeholder image identifier
-  const getPlaceholderImage = (index: number) => {
-    return `Photo ${index + 1}`;
-  };
 
+
+  const getProfileText = (index: number) => {
+    const names = ["Daisy, 27", "David, 28", "Gaby, 31", "Graham, 42", "Indigo, 28", "Jack, 30", "Joey, 42", "Leo, 30", "Meadow, 25", "Nicholas, 35", "Nick, 31", "Philip, 26"];
+    return names[index % names.length];
+  }
+  
+const getCardImage = (index: number) => {
+  const profileName = getProfileText(index);
+  return `/profiles/${encodeURIComponent(profileName)}.PNG`; 
+};
+ 
   const handleSwipe = (direction: 'left' | 'right') => {
     console.log(`Swiped ${direction}`);
+    if (currentImageIndex >= 11) {
+      setSwipeCount(0);
+      setCurrentImageIndex(0);
+      return;
+    }
     setSwipeCount(swipeCount + 1);
     setCurrentImageIndex(currentImageIndex + 1);
   };
@@ -38,16 +52,11 @@ export default function Home() {
         <div className="w-full aspect-[3/4] relative">
           <SwipeCard
             key={currentImageIndex}
-            imageUrl={getPlaceholderImage(currentImageIndex)}
+            imageUrl={getCardImage(currentImageIndex)}
+            profileText={getProfileText(currentImageIndex)}
             onSwipe={handleSwipe}
           />
         </div>
-
-        {/* Stats */}
-{/*         
-        <div className="mt-8 text-center text-gray-600">
-          <p>Cards swiped: {swipeCount}</p>
-        </div> */}
       
 
         {/* Action Buttons */}
