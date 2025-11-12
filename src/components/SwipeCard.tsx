@@ -171,7 +171,7 @@ export default function SwipeCard({ imageUrl, profileText, onSwipe }: SwipeCardP
             </div>
           
           {/* Title section */}
-          <div className="bg-gradient-to-br from-purple-50 via-pink-100 to-blue-50 px-4 py-4">
+          <div className="bg-linear-to-br from-purple-50  to-blue-50 px-4 py-4">
             <h2 className="text-l font-semibold text-gray-800">{profileText}</h2>
           </div>
         </div>
