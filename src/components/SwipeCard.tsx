@@ -1,20 +1,25 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
 
 interface SwipeCardProps {
   imageUrl: string;
+  profileText: string;
   onSwipe: (direction: 'left' | 'right') => void;
+
 }
 
-export default function SwipeCard({ imageUrl, onSwipe }: SwipeCardProps) {
+export default function SwipeCard({ imageUrl, profileText, onSwipe }: SwipeCardProps) {
   const [isDragging, setIsDragging] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [startPos, setStartPos] = useState({ x: 0, y: 0 });
   const [showIcon, setShowIcon] = useState<'heart' | 'x' | null>(null);
   const cardRef = useRef<HTMLDivElement>(null);
 
-  const SWIPE_THRESHOLD = 200; // pixels from center to trigger swipe
+  console.log(imageUrl, profileText);
+
+  const SWIPE_THRESHOLD = 150; // pixels from center to trigger swipe
 
   const handleStart = (clientX: number, clientY: number) => {
     setIsDragging(true);
@@ -155,19 +160,28 @@ export default function SwipeCard({ imageUrl, onSwipe }: SwipeCardProps) {
       onTouchEnd={handleTouchEnd}
     >
       {/* Card */}
-      <div className="w-full h-full bg-white rounded-2xl shadow-2xl overflow-hidden">
-        <div className="w-full h-full bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center relative">
-          {/* Placeholder image */}
-          <div className="absolute inset-0 flex items-center justify-center text-white text-2xl font-bold">
-            {imageUrl}
+        <div className="w-full h-full bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col">
+            <div className="flex-1 relative overflow-hidden">
+            <Image
+              src={imageUrl} 
+              alt={profileText}
+              fill
+              className="w-full h-full object-cover"
+            />
+            </div>
+          
+          {/* Title section */}
+          <div className="bg-gradient-to-br from-purple-50 via-pink-100 to-blue-50 px-4 py-4">
+            <h2 className="text-l font-semibold text-gray-800">{profileText}</h2>
           </div>
         </div>
-      </div>
+      
+      
 
       {/* Overlay icons */}
         {showIcon === 'heart' && (
           <div 
-            className="absolute top-2/3 -left-40 -translate-y-1/2 text-5xl font-bold"
+            className="absolute top-2/3 -left-36 -translate-y-1/2 text-5xl font-bold"
             style={{ transform: `rotate(${-rotation}deg) translateY(-50%)` }}
           >
             ❤️
@@ -175,7 +189,7 @@ export default function SwipeCard({ imageUrl, onSwipe }: SwipeCardProps) {
         )}
         {showIcon === 'x' && (
           <div 
-            className="absolute top-2/3 -right-40 -translate-y-1/2 text-red-500 text-5xl font-bold"
+            className="absolute top-2/3 -right-36 -translate-y-1/2 text-red-500 text-5xl font-bold"
             style={{ transform: `rotate(${-rotation}deg) translateY(-50%)` }}
           >
             ✕
