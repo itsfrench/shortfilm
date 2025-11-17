@@ -33,7 +33,7 @@ const getCardImage = (index: number) => {
   };
 
   return (
-    <div className="flex min-h-screen items-start pt-2 justify-center bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
+    <div className="flex min-h-screen items-start pt-2 justify-center bg-gradient-to-br from-blue-50 to-pink-200">
       <div className="flex flex-col items-center justify-center w-full max-w-md px-6">
         {/* App Header */}
         <div className="relative m-1 flex flex-col items-center">

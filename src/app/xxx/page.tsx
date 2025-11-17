@@ -4,32 +4,26 @@ const suggestedVideos = [
   {
     id: 0,
     title: "Roommates Get a Little Too Cozy on Movie Night",
-    views: "842,391 views",
   },
   {
     id: 1,
     title: "Sunbathing Beauty Knows Everyone’s Watching Her",
-    views: "529,044 views",
   },
   {
     id: 2,
     title: "Private Spa Session Turns... Extremely Relaxing",
-    views: "1,203,887 views",
   },
   {
     id: 3,
     title: "Co-Op Mode Gets Heated When the Bet Gets Spicy",
-    views: "956,210 views",
   },
   {
     id: 4,
     title: "Flexible Girl Shows Off More Than Just Yoga Skills",
-    views: "678,932 views",
   },
   {
     id: 5,
     title: "Vacation Heatwave: Beach Make-Out Session Goes Too Far",
-    views: "1,034,512 views",
   },
 ];
 
@@ -90,9 +84,6 @@ export default function Page() {
             {/* Video Title */}
             <h1 className="text-2xl font-semibold mb-2">Apartment Fix Turns Surprise F*ck With Ex-Girlfriend Lily Tiger</h1>
 
-            {/* Views Count */}
-            <p className="text-gray-400 mb-6">3,869 views</p>
-
             {/* Comments Section */}
             <div className="mt-8">
               <h2 className="text-xl font-semibold mb-4">Comments</h2>
@@ -147,7 +138,6 @@ export default function Page() {
           <p className="font-semibold text-sm line-clamp-2 mb-1">
             {video.title}
           </p>
-          <p className="text-gray-400 text-xs">{video.views}</p>
         </div>
       </div>
     ))}
