@@ -82,13 +82,9 @@ export default function Page() {
           <div className="flex-[2]">
             {/* Video Player */}
             <div className="bg-black rounded-lg overflow-hidden mb-4">
-              <video
-                controls
-                className="w-full aspect-video"
-                src="/Exxed/braz.mp4"
-              >
-                Your browser does not support the video tag.
-              </video>
+              <video controls playsInline className="w-full rounded" poster="/Exxed/thumbnails/brazthumb.png">
+  <source src="https://whvsmd2xl0klgnqw.public.blob.vercel-storage.com/braz.mp4" type="video/mp4" />
+</video>
             </div>
 
             {/* Video Title */}
